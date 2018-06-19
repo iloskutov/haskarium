@@ -12,13 +12,16 @@ import           Graphics.Gloss.Geometry.Angle (normalizeAngle)
 import           Graphics.Gloss.Geometry.Line (intersectSegHorzLine,
                                                intersectSegVertLine)
 import           Graphics.Gloss.Interface.Pure.Game (Event)
-
 import           Haskarium.Const
-import           Haskarium.Types (Angle, Ant, Centipede(..), Creature (..),
-                                  Distance, Flea(..), Fly, LandCreature(..),
-                                  Sim, Speed, Time, World (..), getPoints,
-                                  landCreatures)
-import           Haskarium.Util (distance, randomRS, worldOf)
+import           Haskarium.Creature.Ant (Ant (..))
+import           Haskarium.Creature.Centipede (Centipede (..))
+import           Haskarium.Creature.Flea (Flea (..))
+import           Haskarium.Creature.Fly (Fly (..))
+import           Haskarium.Creature.Types (Creature (..))
+import           Haskarium.Types (Angle, Distance, Speed, Time)
+import           Haskarium.Util (distance, randomRS)
+import           Haskarium.World (LandCreature (..), Sim, World (..), getPoints,
+                                  landCreatures, worldOf)
 
 class Interactive a where
     onTick :: Time -> a -> Sim a

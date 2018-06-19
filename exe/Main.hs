@@ -8,10 +8,9 @@ import           Graphics.Gloss (Display (InWindow), play, white)
 import           Options.Applicative
 import           System.Random (StdGen, newStdGen)
 
-import           Haskarium.Draw (draw)
 import           Haskarium.Generate (makeGame)
 import           Haskarium.Motion (onEvent, onTick)
-import           Haskarium.Types (Sim, World)
+import           Haskarium.World (Sim, World, draw)
 
 main :: IO ()
 main = do

@@ -13,6 +13,17 @@ executable haskarium-view
                     Haskarium.Motion
                     Haskarium.Types
                     Haskarium.Util
+                    Haskarium.World
+                    Haskarium.Class.Drawable
+                    Haskarium.Class.Generate
+                    Haskarium.Class.Interactive
+                    Haskarium.Class.Located
+                    Haskarium.Creature.Ant
+                    Haskarium.Creature.Centipede
+                    Haskarium.Creature.Flea
+                    Haskarium.Creature.Fly
+                    Haskarium.Creature.Types
+
     build-depends:  base
                   , gloss
                   , mtl

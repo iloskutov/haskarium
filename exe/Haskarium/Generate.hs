@@ -9,14 +9,13 @@ module Haskarium.Generate
 import           Control.Monad (replicateM)
 import           Control.Monad.State.Strict (State)
 import           Graphics.Gloss (Point)
+import           Haskarium.Class.Generate (Generate (..))
+import           Haskarium.Const (creatureSizeMax, creatureSizeMin)
+import           Haskarium.Creature.Types (Creature (..))
+import           Haskarium.Util (randomRS)
+import           Haskarium.World (World (..))
 import           Numeric.Natural (Natural)
 import           System.Random (StdGen)
-
-import           Haskarium.Const (creatureSizeMin, creatureSizeMax)
-import           Haskarium.Types (Angle, Ant (..), Centipede (..),
-                                  Creature (..), Flea (..), Fly (..),
-                                  World (..))
-import           Haskarium.Util (randomRS)
 
 type Window = (Point, Point)
 
@@ -50,26 +49,3 @@ makeCreatures window minN maxN =
         pPos = (,) <$> px <*> py
         pDir = randomRS (0, 2 * pi)
         pTR = randomRS (turnRateRange @species)
-
-class Generate a where
-    generate :: State StdGen a
-
-    turnRateRange :: (Angle, Angle)
-    turnRateRange = (pi / 4, pi / 2)
-
-instance Generate Centipede where
-    generate = mkCentipede <$> randomRS (5, 15)
-      where
-        mkCentipede numSegments =
-            Centipede{segments = replicate numSegments (0, 0)}
-
-    turnRateRange = (pi / 25, pi / 20)
-
-instance Generate Flea where
-    generate = Flea <$> randomRS (0.0, 1.0)
-
-instance Generate Ant where
-    generate = pure Ant
-
-instance Generate Fly where
-    generate = pure Fly
